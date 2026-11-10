@@ -211,6 +211,8 @@ jobs:
           fi
           find ./src/lang -name "*.rs" -exec sed -i -e 's|RustDesk|${{ env.appname }}|' {} \;
           sed -i -e 's|RustDesk|${{ env.appname }}|' ./res/msi/Package/License.rtf
+          # titolo delle finestre di errore (MessageBox) dell'installer
+          sed -i -e 's|"RustDesk Output"|"${{ env.appname }}"|' ./src/platform/windows.rs
           
       - name: change company name
         if: env.compname != 'Purslane Ltd'
